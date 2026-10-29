@@ -1,8 +1,8 @@
 [
   {
     "id": "salty-business",
-    "color": "#C8742B",
-    "accent": "#FFE1B8",
+    "color": "#1F5F7A",
+    "accent": "#FFC97A",
     "name": { "en": "Salty Business", "fr": "Sale Affaire" },
     "tagline": {
       "en": "Milk chocolate, burnt caramel, a cheeky pinch of sea salt.",
@@ -16,7 +16,7 @@
   },
   {
     "id": "razzle-dazzle",
-    "color": "#E8336D",
+    "color": "#C2185B",
     "accent": "#FFD0DE",
     "name": { "en": "Razzle Dazzle", "fr": "Framboise Frimeuse" },
     "tagline": {
@@ -61,7 +61,7 @@
   },
   {
     "id": "hot-mess",
-    "color": "#FF8A1F",
+    "color": "#C2410C",
     "accent": "#FFE45C",
     "name": { "en": "Hot Mango Mess", "fr": "Mangue Pimentée" },
     "tagline": {

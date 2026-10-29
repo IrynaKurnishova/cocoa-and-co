@@ -10,7 +10,11 @@ const mm = gsap.matchMedia();
 
 mm.add('(prefers-reduced-motion: no-preference)', () => {
   initHero();
+  initProducts();
 });
+
+// Pointer tilt only for a real mouse: no touch, no reduced motion.
+mm.add('(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine)', () => initTilt());
 
 // Webfonts change text metrics, so recalculate trigger positions once they're in.
 document.fonts.ready.then(() => ScrollTrigger.refresh());
@@ -74,4 +78,60 @@ function initHero() {
     gsap.to(el, { y: -Number(el.dataset.depth) * 90, ease: 'none', scrollTrigger: scrub });
   });
   gsap.to(q('[data-hero-copy]'), { y: 50, ease: 'none', scrollTrigger: scrub });
+}
+
+function initProducts() {
+  const slides = gsap.utils.toArray<HTMLElement>('[data-carousel-slide]');
+  if (!slides.length) return;
+
+  gsap.from(slides, {
+    y: 80,
+    rotate: 3,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.1,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: slides[0].parentElement, start: 'top 80%', once: true },
+  });
+}
+
+function initTilt() {
+  const cleanups = gsap.utils.toArray<HTMLElement>('[data-tilt]').map((card) => {
+    const art = card.querySelector<SVGElement>('[data-tilt-art]');
+    const tween = { duration: 0.5, ease: 'power3.out' };
+    gsap.set(card, { transformPerspective: 900 });
+
+    const rotateX = gsap.quickTo(card, 'rotationX', tween);
+    const rotateY = gsap.quickTo(card, 'rotationY', tween);
+    const artX = art && gsap.quickTo(art, 'x', tween);
+    const artY = art && gsap.quickTo(art, 'y', tween);
+
+    const move = (event: PointerEvent) => {
+      if (event.pointerType !== 'mouse') return;
+      const rect = card.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width - 0.5;
+      const py = (event.clientY - rect.top) / rect.height - 0.5;
+      rotateY(px * 12);
+      rotateX(py * -12);
+      // The illustration drifts with the pointer for a bit of depth.
+      artX?.(px * 14);
+      artY?.(py * 14);
+    };
+    const reset = () => {
+      rotateX(0);
+      rotateY(0);
+      artX?.(0);
+      artY?.(0);
+    };
+
+    card.addEventListener('pointermove', move);
+    card.addEventListener('pointerleave', reset);
+    return () => {
+      card.removeEventListener('pointermove', move);
+      card.removeEventListener('pointerleave', reset);
+    };
+  });
+
+  // matchMedia reverts the tweens; listeners are ours to remove.
+  return () => cleanups.forEach((cleanup) => cleanup());
 }
