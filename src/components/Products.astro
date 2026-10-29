@@ -6,8 +6,8 @@ const locale = getLocale(Astro.url);
 const copy = site.sections.products;
 ---
 
-<section id="flavours" aria-labelledby="flavours-title" class="px-4 py-20 md:px-8">
+<section id="products" aria-labelledby="products-title" class="px-4 py-20 md:px-8">
   <p class="font-bold uppercase tracking-widest">{pick(copy.eyebrow, locale)}</p>
-  <h2 id="flavours-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
+  <h2 id="products-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
   <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
 </section>

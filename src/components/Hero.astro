@@ -1,16 +1,75 @@
 ---
+import ChocolateBar from './illustrations/ChocolateBar.astro';
 import { site } from '../content';
 import { getLocale, pick } from '../i18n/utils';
 
 const locale = getLocale(Astro.url);
 const { hero } = site;
+
+// Split on regular spaces only, so French non-breaking spaces keep their words together.
+const words = pick(hero.headline, locale).split(' ');
 ---
 
-<section id="top" aria-labelledby="hero-title" class="px-4 pt-24 pb-16 md:px-8">
-  <p class="font-bold uppercase tracking-widest">{pick(hero.eyebrow, locale)}</p>
-  <h1 id="hero-title" class="mt-3 text-5xl md:text-8xl">{pick(hero.headline, locale)}</h1>
-  <p class="mt-6 max-w-prose text-lg md:text-xl">{pick(hero.subhead, locale)}</p>
-  <a href="#flavours" class="mt-8 inline-block rounded-full bg-cocoa px-6 py-3 font-bold text-cream">
-    {pick(hero.cta, locale)}
-  </a>
+<section
+  id="top"
+  aria-labelledby="hero-title"
+  class="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-8 overflow-hidden px-4 pt-8 pb-16 md:grid-cols-2 md:px-8 md:pt-12 md:pb-24"
+  data-hero
+>
+  <div class="relative z-10" data-hero-copy>
+    <p
+      class="inline-block rounded-full bg-sun px-4 py-1.5 text-sm font-bold tracking-widest uppercase"
+      data-hero-fade
+    >
+      {pick(hero.eyebrow, locale)}
+    </p>
+
+    <h1 id="hero-title" class="mt-5 text-[clamp(3rem,9vw,6.5rem)] text-balance">
+      {
+        words.map((word, i) => (
+          <>
+            <span
+              class:list={[
+                'inline-block',
+                i === words.length - 1 &&
+                  'relative z-0 px-1 before:absolute before:inset-x-0 before:bottom-[0.08em] before:-z-10 before:h-[0.4em] before:-rotate-2 before:rounded-sm before:bg-pink',
+              ]}
+              data-hero-word
+            >
+              {word}
+            </span>{' '}
+          </>
+        ))
+      }
+    </h1>
+
+    <p class="mt-6 max-w-[34ch] text-lg md:text-xl" data-hero-sub>
+      {pick(hero.subhead, locale)}
+    </p>
+
+    <a
+      href="#products"
+      class="group mt-8 inline-flex items-center gap-3 rounded-full bg-cocoa px-7 py-4 text-lg font-bold text-cream shadow-[5px_5px_0_var(--color-pink)] transition-transform duration-200 hover:-translate-y-0.5 hover:-rotate-2 motion-reduce:transition-none"
+      data-hero-fade
+    >
+      {pick(hero.cta, locale)}
+      <svg
+        viewBox="0 0 24 24"
+        width="20"
+        height="20"
+        aria-hidden="true"
+        class="transition-transform duration-200 group-hover:translate-y-0.5 motion-reduce:transition-none"
+      >
+        <path
+          d="M12 4v16m0 0-6-6m6 6 6-6"
+          stroke="currentColor"
+          stroke-width="2.5"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+
+  <ChocolateBar class="mx-auto h-auto w-full max-w-lg" />
 </section>

@@ -8,6 +8,14 @@
 
   --font-display: var(--font-bricolage);
   --font-sans: var(--font-dm-sans);
+
+  --animate-marquee: marquee 28s linear infinite;
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {

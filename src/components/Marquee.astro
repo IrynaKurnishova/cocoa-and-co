@@ -3,10 +3,29 @@ import { site } from '../content';
 import { getLocale, pick } from '../i18n/utils';
 
 const locale = getLocale(Astro.url);
+const phrases = site.marquee.map((phrase) => pick(phrase, locale));
 ---
 
-<div class="overflow-hidden bg-pink py-4 text-cocoa">
-  <ul class="flex gap-8 whitespace-nowrap font-display text-2xl">
-    {site.marquee.map((phrase) => <li>{pick(phrase, locale)}</li>)}
-  </ul>
+<!-- Two identical copies slide by -50% for a seamless loop; the second is hidden from assistive tech. -->
+<div class="overflow-hidden py-6">
+  <div class="group -mx-[5%] -rotate-2 bg-pink py-4 text-cocoa shadow-[0_6px_0_var(--color-cocoa)]">
+    <div
+      class="flex w-max animate-marquee group-hover:[animation-play-state:paused] motion-reduce:[animation-play-state:paused]"
+    >
+      {
+        [false, true].map((isCopy) => (
+          <ul class="flex shrink-0 items-center" aria-hidden={isCopy ? 'true' : undefined}>
+            {phrases.map((phrase) => (
+              <li class="flex items-center font-display text-2xl whitespace-nowrap uppercase md:text-4xl">
+                {phrase}
+                <svg viewBox="-20 -20 40 40" width="28" height="28" aria-hidden="true" class="mx-6 shrink-0 md:mx-8">
+                  <path d="M0-20Q3-3 20 0Q3 3 0 20Q-3 3-20 0Q-3-3 0-20Z" fill="var(--color-sun)" />
+                </svg>
+              </li>
+            ))}
+          </ul>
+        ))
+      }
+    </div>
+  </div>
 </div>
