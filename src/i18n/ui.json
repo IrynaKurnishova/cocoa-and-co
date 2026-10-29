@@ -1,0 +1,34 @@
+{
+  "en": {
+    "skipToContent": "Skip to content",
+    "langToggle.label": "Language",
+    "langToggle.switchTo": "Lire en français",
+    "nav.shop": "Find a shop",
+    "carousel.prev": "Previous flavour",
+    "carousel.next": "Next flavour",
+    "rating.label": "{rating} out of 5 stars",
+    "comparison.feature": "What matters",
+    "newsletter.label": "Email address",
+    "newsletter.placeholder": "you@example.com",
+    "newsletter.submit": "Sign me up",
+    "newsletter.errorEmpty": "We need an email to send you chocolate news.",
+    "newsletter.errorInvalid": "That email looks a bit melted. Mind checking it?",
+    "newsletter.success": "You're in! First sweet email lands soon. (Demo only, nothing was sent.)"
+  },
+  "fr": {
+    "skipToContent": "Aller au contenu",
+    "langToggle.label": "Langue",
+    "langToggle.switchTo": "Read in English",
+    "nav.shop": "Trouver une boutique",
+    "carousel.prev": "Saveur précédente",
+    "carousel.next": "Saveur suivante",
+    "rating.label": "{rating} étoiles sur 5",
+    "comparison.feature": "Ce qui compte",
+    "newsletter.label": "Adresse e-mail",
+    "newsletter.placeholder": "vous@exemple.com",
+    "newsletter.submit": "Je m’inscris",
+    "newsletter.errorEmpty": "Il nous faut un e-mail pour vous parler chocolat.",
+    "newsletter.errorInvalid": "Cet e-mail a l’air un peu fondu. Vous vérifiez ?",
+    "newsletter.success": "C’est fait ! Premier e-mail gourmand très bientôt. (Démo, rien n’a été envoyé.)"
+  }
+}

@@ -1,0 +1,15 @@
+---
+import { site } from '../content';
+import { getLocale, pick } from '../i18n/utils';
+
+const locale = getLocale(Astro.url);
+const { footer } = site;
+---
+
+<footer class="bg-cocoa px-4 py-16 text-cream md:px-8">
+  <p class="font-display text-3xl">{pick(footer.tagline, locale)}</p>
+  <h2 class="mt-10 text-2xl">{pick(footer.newsletterTitle, locale)}</h2>
+  <p class="mt-2 max-w-prose">{pick(footer.newsletterBody, locale)}</p>
+  <p class="mt-10 text-sm">{pick(footer.legal, locale)}</p>
+  <p class="mt-1 text-sm">{pick(footer.demoNote, locale)}</p>
+</footer>

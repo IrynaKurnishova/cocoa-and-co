@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Margot L.",
+    "city": { "en": "Lyon", "fr": "Lyon" },
+    "rating": 5,
+    "text": {
+      "en": "Bought one Salty Business for the train. Arrived with an empty wrapper and no regrets.",
+      "fr": "J’ai acheté une Sale Affaire pour le train. Arrivée avec un emballage vide et aucun regret."
+    }
+  },
+  {
+    "name": "Tom R.",
+    "city": { "en": "London", "fr": "Londres" },
+    "rating": 5,
+    "text": {
+      "en": "The Dark Side 72% tastes like actual fruit. I didn't know chocolate could do that.",
+      "fr": "Le Côté Obscur 72 % a un vrai goût de fruit. J’ignorais que le chocolat pouvait faire ça."
+    }
+  },
+  {
+    "name": "Inès B.",
+    "city": { "en": "Montreal", "fr": "Montréal" },
+    "rating": 4,
+    "text": {
+      "en": "Hot Mango Mess is chaos in the best way. Docking one star because my kids found my stash.",
+      "fr": "La Mangue Pimentée, c’est le chaos version délicieuse. Une étoile en moins parce que mes enfants ont trouvé ma cachette."
+    }
+  },
+  {
+    "name": "Jonas V.",
+    "city": { "en": "Brussels", "fr": "Bruxelles" },
+    "rating": 5,
+    "text": {
+      "en": "I'm Belgian, so I'm hard to impress. Nut Job impressed me. Don't tell my grandmother.",
+      "fr": "Je suis belge, donc difficile à impressionner. La Noisette Toquée m’a impressionné. Ne le dites pas à ma grand-mère."
+    }
+  },
+  {
+    "name": "Priya S.",
+    "city": { "en": "Paris", "fr": "Paris" },
+    "rating": 5,
+    "text": {
+      "en": "Razzle Dazzle is pink, crunchy and slightly ridiculous. Exactly what my Tuesday needed.",
+      "fr": "La Framboise Frimeuse est rose, croquante et un peu ridicule. Exactement ce qu’il fallait à mon mardi."
+    }
+  },
+  {
+    "name": "Lucas M.",
+    "city": { "en": "Bordeaux", "fr": "Bordeaux" },
+    "rating": 4,
+    "text": {
+      "en": "Gorgeous wrappers, even better bars. Would happily eat the compostable paper too, but I'm told not to.",
+      "fr": "Emballages superbes, tablettes encore meilleures. Je mangerais bien le papier compostable aussi, mais on me dit que non."
+    }
+  }
+]

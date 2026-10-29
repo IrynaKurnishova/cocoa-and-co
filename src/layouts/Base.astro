@@ -1,0 +1,46 @@
+---
+import { Font } from 'astro:assets';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import { site } from '../content';
+import { getLocale, locales, pick, t } from '../i18n/utils';
+import '../styles/global.css';
+
+const locale = getLocale(Astro.url);
+const title = pick(site.meta.title, locale);
+const description = pick(site.meta.description, locale);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#3B1F14" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {locales.map((l) => <link rel="alternate" hreflang={l} href={getAbsoluteLocaleUrl(l)} />)}
+    <link rel="alternate" hreflang="x-default" href={getAbsoluteLocaleUrl('en')} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={locale === 'fr' ? 'fr_FR' : 'en_GB'} />
+
+    <Font cssVariable="--font-bricolage" preload />
+    <Font cssVariable="--font-dm-sans" />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-cocoa focus:px-5 focus:py-3 focus:text-cream"
+    >
+      {t(locale, 'skipToContent')}
+    </a>
+    <slot />
+    <script>
+      import '../scripts/animations';
+    </script>
+  </body>
+</html>

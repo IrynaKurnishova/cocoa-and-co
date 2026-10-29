@@ -1,0 +1,44 @@
+[
+  {
+    "question": { "en": "Are your bars vegan?", "fr": "Vos tablettes sont-elles vegan ?" },
+    "answer": {
+      "en": "The Dark Side 72% is vegan. The others use organic milk, but an oat-milk range is in the test kitchen right now.",
+      "fr": "Le Côté Obscur 72 % est vegan. Les autres contiennent du lait bio, mais une gamme au lait d’avoine est en test à l’atelier."
+    }
+  },
+  {
+    "question": { "en": "What about allergens?", "fr": "Et les allergènes ?" },
+    "answer": {
+      "en": "All bars are made in a kitchen that handles nuts, milk and soy. Each wrapper lists allergens in bold, so they’re hard to miss.",
+      "fr": "Toutes nos tablettes sont fabriquées dans un atelier qui utilise fruits à coque, lait et soja. Les allergènes sont en gras sur chaque emballage."
+    }
+  },
+  {
+    "question": { "en": "How should I store chocolate?", "fr": "Comment conserver le chocolat ?" },
+    "answer": {
+      "en": "Somewhere cool and dry, between 15 and 18 °C, away from the fridge (it causes sugar bloom). Or just eat it. Problem solved.",
+      "fr": "Au frais et au sec, entre 15 et 18 °C, loin du réfrigérateur (il fait blanchir le chocolat). Ou mangez-le. Problème réglé."
+    }
+  },
+  {
+    "question": { "en": "Where do your beans come from?", "fr": "D’où viennent vos fèves ?" },
+    "answer": {
+      "en": "From partner cooperatives in Peru, Ghana and Madagascar. We visit every year and publish what we pay per kilo.",
+      "fr": "De coopératives partenaires au Pérou, au Ghana et à Madagascar. Nous leur rendons visite chaque année et publions le prix payé au kilo."
+    }
+  },
+  {
+    "question": { "en": "Is the wrapper really compostable?", "fr": "L’emballage est-il vraiment compostable ?" },
+    "answer": {
+      "en": "Yes. Both the paper and the inner film break down in a home compost in about 12 weeks. The colours come from plant-based inks.",
+      "fr": "Oui. Le papier comme le film intérieur se décomposent en environ 12 semaines dans un compost domestique. Les couleurs viennent d’encres végétales."
+    }
+  },
+  {
+    "question": { "en": "Can I order for an event or a gift?", "fr": "Puis-je commander pour un événement ou un cadeau ?" },
+    "answer": {
+      "en": "Absolutely. From 50 bars we can add a custom sleeve with your message. Ask your nearest stockist or join the newsletter for the order form.",
+      "fr": "Bien sûr. À partir de 50 tablettes, nous ajoutons une bande personnalisée avec votre message. Demandez à votre revendeur ou inscrivez-vous à la newsletter."
+    }
+  }
+]

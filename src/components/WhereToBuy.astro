@@ -1,0 +1,13 @@
+---
+import { site } from '../content';
+import { getLocale, pick } from '../i18n/utils';
+
+const locale = getLocale(Astro.url);
+const copy = site.sections.whereToBuy;
+---
+
+<section id="where-to-buy" aria-labelledby="where-to-buy-title" class="px-4 py-20 md:px-8">
+  <p class="font-bold uppercase tracking-widest">{pick(copy.eyebrow, locale)}</p>
+  <h2 id="where-to-buy-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
+  <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
+</section>

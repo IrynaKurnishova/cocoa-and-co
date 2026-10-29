@@ -1,0 +1,12 @@
+---
+import { site } from '../content';
+import { getLocale, pick } from '../i18n/utils';
+
+const locale = getLocale(Astro.url);
+---
+
+<div class="overflow-hidden bg-pink py-4 text-cocoa">
+  <ul class="flex gap-8 whitespace-nowrap font-display text-2xl">
+    {site.marquee.map((phrase) => <li>{pick(phrase, locale)}</li>)}
+  </ul>
+</div>

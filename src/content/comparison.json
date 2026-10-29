@@ -1,0 +1,27 @@
+[
+  {
+    "label": { "en": "Ingredients", "fr": "Ingrédients" },
+    "us": { "en": "5 you can pronounce", "fr": "5, tous prononçables" },
+    "them": { "en": "A whole paragraph", "fr": "Un paragraphe entier" }
+  },
+  {
+    "label": { "en": "Cacao content", "fr": "Teneur en cacao" },
+    "us": { "en": "Up to 72%", "fr": "Jusqu’à 72 %" },
+    "them": { "en": "Mostly sugar, honestly", "fr": "Surtout du sucre, avouons-le" }
+  },
+  {
+    "label": { "en": "Bean sourcing", "fr": "Origine des fèves" },
+    "us": { "en": "Direct from named co-ops", "fr": "En direct de coopératives identifiées" },
+    "them": { "en": "Who knows?", "fr": "Mystère" }
+  },
+  {
+    "label": { "en": "Palm oil", "fr": "Huile de palme" },
+    "us": { "en": "Never", "fr": "Jamais" },
+    "them": { "en": "Often", "fr": "Souvent" }
+  },
+  {
+    "label": { "en": "Wrapper", "fr": "Emballage" },
+    "us": { "en": "Home-compostable paper", "fr": "Papier compostable à la maison" },
+    "them": { "en": "Shiny plastic", "fr": "Plastique brillant" }
+  }
+]

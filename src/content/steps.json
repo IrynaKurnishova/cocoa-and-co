@@ -1,0 +1,42 @@
+[
+  {
+    "id": "source",
+    "number": 1,
+    "title": { "en": "Pick the beans", "fr": "Choisir les fèves" },
+    "body": {
+      "en": "We buy cacao straight from small cooperatives, pay well above market price, and taste every batch before it ships.",
+      "fr": "Nous achetons le cacao directement à de petites coopératives, bien au-dessus du prix du marché, et goûtons chaque lot avant son départ."
+    },
+    "illustration": "bean"
+  },
+  {
+    "id": "roast",
+    "number": 2,
+    "title": { "en": "Roast it low & slow", "fr": "Torréfier en douceur" },
+    "body": {
+      "en": "Small-batch roasting wakes up the fruity, nutty notes. Our kitchen smells like brownies all day. Nobody complains.",
+      "fr": "Une torréfaction en petits lots réveille les notes fruitées et grillées. L’atelier sent le brownie toute la journée. Personne ne s’en plaint."
+    },
+    "illustration": "roast"
+  },
+  {
+    "id": "grind",
+    "number": 3,
+    "title": { "en": "Grind for days", "fr": "Broyer, longtemps" },
+    "body": {
+      "en": "Cracked nibs spin in stone grinders for 72 hours until they turn silky. Patience is our secret ingredient (along with cocoa butter).",
+      "fr": "Les éclats de fèves tournent 72 heures sous la meule de pierre jusqu’à devenir soyeux. Notre ingrédient secret : la patience (et le beurre de cacao)."
+    },
+    "illustration": "grind"
+  },
+  {
+    "id": "bar",
+    "number": 4,
+    "title": { "en": "Temper, snap, wrap", "fr": "Tempérer, croquer, emballer" },
+    "body": {
+      "en": "Tempered for that glossy snap, poured into moulds and tucked into a wrapper loud enough to see from across the shop.",
+      "fr": "Tempéré pour un croquant brillant, coulé en moule puis glissé dans un emballage qu’on repère depuis l’autre bout du magasin."
+    },
+    "illustration": "bar"
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "salty-business",
+    "color": "#C8742B",
+    "accent": "#FFE1B8",
+    "name": { "en": "Salty Business", "fr": "Sale Affaire" },
+    "tagline": {
+      "en": "Milk chocolate, burnt caramel, a cheeky pinch of sea salt.",
+      "fr": "Chocolat au lait, caramel brûlé et une pincée de sel effrontée."
+    },
+    "notes": [
+      { "en": "Burnt caramel", "fr": "Caramel brûlé" },
+      { "en": "Flaky sea salt", "fr": "Fleur de sel" },
+      { "en": "Brown butter", "fr": "Beurre noisette" }
+    ]
+  },
+  {
+    "id": "razzle-dazzle",
+    "color": "#E8336D",
+    "accent": "#FFD0DE",
+    "name": { "en": "Razzle Dazzle", "fr": "Framboise Frimeuse" },
+    "tagline": {
+      "en": "White chocolate that got into the raspberry patch.",
+      "fr": "Un chocolat blanc qui s’est roulé dans les framboises."
+    },
+    "notes": [
+      { "en": "Tart raspberry", "fr": "Framboise acidulée" },
+      { "en": "Vanilla cream", "fr": "Crème vanillée" },
+      { "en": "Popping candy", "fr": "Sucre pétillant" }
+    ]
+  },
+  {
+    "id": "nut-job",
+    "color": "#8A5A3B",
+    "accent": "#F3D9A4",
+    "name": { "en": "Nut Job", "fr": "Noisette Toquée" },
+    "tagline": {
+      "en": "So many roasted hazelnuts it’s honestly a bit much. In a good way.",
+      "fr": "Tellement de noisettes grillées que c’est presque trop. Presque."
+    },
+    "notes": [
+      { "en": "Roasted hazelnut", "fr": "Noisette torréfiée" },
+      { "en": "Gianduja", "fr": "Gianduja" },
+      { "en": "Toffee crunch", "fr": "Éclats de toffee" }
+    ]
+  },
+  {
+    "id": "dark-side",
+    "color": "#2A1A2E",
+    "accent": "#C9A7FF",
+    "name": { "en": "The Dark Side 72%", "fr": "Côté Obscur 72 %" },
+    "tagline": {
+      "en": "Single-origin dark. Serious beans, zero seriousness.",
+      "fr": "Noir d’origine unique. Fèves sérieuses, zéro sérieux."
+    },
+    "notes": [
+      { "en": "Red berries", "fr": "Fruits rouges" },
+      { "en": "Black tea", "fr": "Thé noir" },
+      { "en": "Cocoa nib", "fr": "Grué de cacao" }
+    ]
+  },
+  {
+    "id": "hot-mess",
+    "color": "#FF8A1F",
+    "accent": "#FFE45C",
+    "name": { "en": "Hot Mango Mess", "fr": "Mangue Pimentée" },
+    "tagline": {
+      "en": "Dark milk, dried mango and a chilli kick that sneaks up on you.",
+      "fr": "Lait corsé, mangue séchée et un piment qui arrive en douce."
+    },
+    "notes": [
+      { "en": "Sun-dried mango", "fr": "Mangue séchée" },
+      { "en": "Chipotle chilli", "fr": "Piment chipotle" },
+      { "en": "Lime zest", "fr": "Zeste de citron vert" }
+    ]
+  }
+]

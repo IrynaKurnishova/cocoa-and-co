@@ -1,0 +1,27 @@
+[
+  {
+    "name": "La Fève Folle",
+    "city": { "en": "Paris", "fr": "Paris" },
+    "address": "18 rue des Gourmands, 75011 Paris"
+  },
+  {
+    "name": "Le Petit Cacaotier",
+    "city": { "en": "Lyon", "fr": "Lyon" },
+    "address": "4 quai des Douceurs, 69002 Lyon"
+  },
+  {
+    "name": "Sugar & Sons Pantry",
+    "city": { "en": "London", "fr": "Londres" },
+    "address": "27 Cocoa Lane, London E2 7XX"
+  },
+  {
+    "name": "Épicerie Bonbonne",
+    "city": { "en": "Montreal", "fr": "Montréal" },
+    "address": "512 rue Saint-Sucre, Montréal QC H2X 0A0"
+  },
+  {
+    "name": "Maison Praline",
+    "city": { "en": "Brussels", "fr": "Bruxelles" },
+    "address": "9 rue du Chocolatier, 1000 Bruxelles"
+  }
+]

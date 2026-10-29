@@ -1,1 +1,39 @@
 @import "tailwindcss";
+
+@theme {
+  --color-cocoa: #3b1f14;
+  --color-pink: #ff4f9a;
+  --color-sun: #ffd23f;
+  --color-cream: #fff4e4;
+
+  --font-display: var(--font-bricolage);
+  --font-sans: var(--font-dm-sans);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-cream font-sans text-cocoa antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display leading-none tracking-tight;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-cocoa);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}

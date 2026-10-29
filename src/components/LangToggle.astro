@@ -1,0 +1,13 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import { getLocale, t } from '../i18n/utils';
+
+const locale = getLocale(Astro.url);
+const other = locale === 'en' ? 'fr' : 'en';
+---
+
+<nav aria-label={t(locale, 'langToggle.label')}>
+  <a href={getRelativeLocaleUrl(other)} hreflang={other} lang={other} class="font-bold underline underline-offset-4">
+    {t(locale, 'langToggle.switchTo')}
+  </a>
+</nav>

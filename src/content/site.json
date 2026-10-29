@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "title": {
+      "en": "Cocoa & Co. | Seriously good chocolate, not so serious",
+      "fr": "Cocoa & Co. | Du chocolat sérieusement bon, pas très sérieux"
+    },
+    "description": {
+      "en": "Small-batch, bean-to-bar chocolate in loud wrappers. Five cheeky flavours, honest beans, compostable packaging. A fictional brand for a portfolio demo.",
+      "fr": "Chocolat bean-to-bar en petits lots, dans des emballages qui claquent. Cinq saveurs effrontées, des fèves honnêtes, un packaging compostable. Marque fictive pour un portfolio."
+    }
+  },
+  "hero": {
+    "eyebrow": { "en": "Bean-to-bar, small batch", "fr": "De la fève à la tablette" },
+    "headline": { "en": "Chocolate with a big mouth.", "fr": "Du chocolat qui a du caractère." },
+    "subhead": {
+      "en": "Honest beans, loud flavours and wrappers you’ll want to keep. Go on, snap a square.",
+      "fr": "Des fèves honnêtes, des saveurs qui claquent et des emballages qu’on garde. Allez, croquez un carré."
+    },
+    "cta": { "en": "Meet the flavours", "fr": "Découvrir les saveurs" }
+  },
+  "marquee": [
+    { "en": "Bean to bar", "fr": "De la fève à la tablette" },
+    { "en": "No palm oil", "fr": "Sans huile de palme" },
+    { "en": "Compostable wrappers", "fr": "Emballages compostables" },
+    { "en": "Snap guaranteed", "fr": "Croquant garanti" },
+    { "en": "Made in small batches", "fr": "Fabriqué en petits lots" }
+  ],
+  "sections": {
+    "products": {
+      "eyebrow": { "en": "The line-up", "fr": "La bande" },
+      "title": { "en": "Five bars. Zero chill.", "fr": "Cinq tablettes. Zéro modération." },
+      "intro": {
+        "en": "Every flavour is built around one big idea, then dialled up a notch.",
+        "fr": "Chaque saveur part d’une grande idée, puis on monte le volume d’un cran."
+      }
+    },
+    "process": {
+      "eyebrow": { "en": "How it’s made", "fr": "Comment on le fait" },
+      "title": { "en": "From bean to bar in four steps.", "fr": "De la fève à la tablette en quatre étapes." },
+      "intro": {
+        "en": "No shortcuts, no mystery fats. Just beans, patience and a very warm kitchen.",
+        "fr": "Pas de raccourcis, pas de graisses mystère. Des fèves, de la patience et un atelier bien chaud."
+      }
+    },
+    "comparison": {
+      "eyebrow": { "en": "Side by side", "fr": "Face à face" },
+      "title": { "en": "Us vs. the usual suspects.", "fr": "Nous contre les suspects habituels." },
+      "intro": {
+        "en": "We’re not naming names. We don’t need to.",
+        "fr": "On ne cite personne. Pas besoin."
+      },
+      "usLabel": { "en": "Cocoa & Co.", "fr": "Cocoa & Co." },
+      "themLabel": { "en": "Big Candy", "fr": "Les géants du bonbon" }
+    },
+    "reviews": {
+      "eyebrow": { "en": "Fan mail", "fr": "Courrier des fans" },
+      "title": { "en": "People are saying things.", "fr": "On parle de nous." },
+      "intro": {
+        "en": "Unfiltered, (mostly) unbiased, definitely chocolate-smeared.",
+        "fr": "Sans filtre, (presque) impartial, et forcément un peu chocolaté."
+      },
+      "demoNote": {
+        "en": "Demo content: these reviews are fictional.",
+        "fr": "Contenu de démonstration : ces avis sont fictifs."
+      }
+    },
+    "whereToBuy": {
+      "eyebrow": { "en": "Where to buy", "fr": "Où acheter" },
+      "title": { "en": "Find us in the wild.", "fr": "Trouvez-nous près de chez vous." },
+      "intro": {
+        "en": "Our bars hang out in these independent shops. Say hi from us.",
+        "fr": "Nos tablettes traînent dans ces boutiques indépendantes. Passez-leur le bonjour."
+      }
+    },
+    "faq": {
+      "eyebrow": { "en": "FAQ", "fr": "FAQ" },
+      "title": { "en": "Questions, answered.", "fr": "Vos questions, nos réponses." },
+      "intro": {
+        "en": "Can’t find yours? It’s probably “can I have another square?” The answer is yes.",
+        "fr": "Votre question n’y est pas ? C’est sûrement « je peux reprendre un carré ? ». La réponse est oui."
+      }
+    }
+  },
+  "footer": {
+    "tagline": {
+      "en": "Seriously good chocolate. Not so serious people.",
+      "fr": "Du chocolat sérieusement bon. Des gens pas très sérieux."
+    },
+    "newsletterTitle": { "en": "Get the sweet stuff first.", "fr": "Les bonnes nouvelles, en premier." },
+    "newsletterBody": {
+      "en": "New flavours, limited drops and the occasional terrible pun. Once a month, tops.",
+      "fr": "Nouvelles saveurs, éditions limitées et quelques jeux de mots douteux. Une fois par mois, maximum."
+    },
+    "legal": { "en": "© 2026 Cocoa & Co.", "fr": "© 2026 Cocoa & Co." },
+    "demoNote": {
+      "en": "Cocoa & Co. is a fictional brand created for a portfolio demo.",
+      "fr": "Cocoa & Co. est une marque fictive créée pour un portfolio."
+    }
+  }
+}
