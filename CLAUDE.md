@@ -61,6 +61,9 @@ Rules:
 - Marquee is pure CSS (`@keyframes`), paused under reduced motion.
 - Carousel = CSS scroll-snap + pointer-based tilt (disabled on touch and reduced motion).
 - Call `ScrollTrigger.refresh()` after fonts load.
+- New ScrollTriggers for sections below "How it's made" must be created **after** the pinned
+  Process trigger in `animations.ts` (its pin spacing shifts everything below it), and set
+  `refreshPriority: -1` so they still refresh after it when matchMedia re-creates the pin on resize.
 
 ## Quality bar
 - Mobile-first; test at 360px, 768px, 1280px.
