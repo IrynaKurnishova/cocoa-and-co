@@ -120,12 +120,13 @@ function initProcessPinned() {
       trigger: section,
       pin: true,
       start: 'top top',
-      // One viewport of scrolling per step change.
+      // One viewport of scrolling per step change; a function, so it's re-measured on refresh.
+      // No invalidateOnRefresh: the tween values are static, and invalidating here wipes the
+      // start state of other sections' untriggered from() tweens.
       end: () => `+=${last * window.innerHeight}`,
       scrub: 0.6,
       // Settle on the nearest step. No inertia: scrub lag reads as velocity and would skip steps.
       snap: { snapTo: 'labels', inertia: false, duration: { min: 0.2, max: 0.6 }, delay: 0.1, ease: 'power1.inOut' },
-      invalidateOnRefresh: true,
     },
   });
 

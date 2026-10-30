@@ -22,7 +22,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
       <div class="process-counter" aria-hidden="true">
         <div class="flex items-end gap-3 font-display leading-none">
           <span class="block h-[1em] overflow-hidden text-8xl">
-            <span class="block" data-process-digits>
+            <span class="block tabular-nums" data-process-digits>
               {steps.map((step) => <span class="block h-[1em]">{pad(step.number)}</span>)}
             </span>
           </span>
