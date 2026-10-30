@@ -1,13 +1,63 @@
 ---
-import { site } from '../content';
+import { faq, site } from '../content';
 import { getLocale, pick } from '../i18n/utils';
 
 const locale = getLocale(Astro.url);
 const copy = site.sections.faq;
 ---
 
-<section id="faq" aria-labelledby="faq-title" class="px-4 py-20 md:px-8">
-  <p class="font-bold uppercase tracking-widest">{pick(copy.eyebrow, locale)}</p>
-  <h2 id="faq-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
-  <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
+<section id="faq" aria-labelledby="faq-title" class="px-4 py-20 md:px-8 md:py-28">
+  <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[2fr_3fr] lg:gap-16">
+    <div class="lg:sticky lg:top-12 lg:self-start">
+      <p class="font-bold tracking-widest uppercase">{pick(copy.eyebrow, locale)}</p>
+      <h2 id="faq-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
+      <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
+    </div>
+
+    <div class="divide-y-2 divide-cocoa/15 border-y-2 border-cocoa/15">
+      {
+        faq.map((item) => (
+          <details class="faq-item group">
+            <summary class="flex cursor-pointer items-center justify-between gap-6 py-5 font-display text-xl md:text-2xl">
+              {pick(item.question, locale)}
+              <span
+                aria-hidden="true"
+                class="faq-icon grid size-10 shrink-0 place-items-center rounded-full bg-sun group-open:bg-pink"
+              >
+                <svg viewBox="0 0 20 20" width="18" height="18">
+                  <path d="M10 3v14M3 10h14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              </span>
+            </summary>
+            <p class="max-w-prose pb-6 text-lg">{pick(item.answer, locale)}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
 </section>
+
+<style>
+  .faq-item summary {
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* Plus turns into a cross when open (transform only). */
+  .faq-icon {
+    transition: transform 0.25s ease;
+  }
+
+  .faq-item[open] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq-icon {
+      transition: none;
+    }
+  }
+</style>
