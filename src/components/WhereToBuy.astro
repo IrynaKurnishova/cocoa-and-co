@@ -1,13 +1,49 @@
 ---
-import { site } from '../content';
-import { getLocale, pick } from '../i18n/utils';
+import { retailers, site } from '../content';
+import { getLocale, pick, t } from '../i18n/utils';
 
 const locale = getLocale(Astro.url);
 const copy = site.sections.whereToBuy;
 ---
 
-<section id="where-to-buy" aria-labelledby="where-to-buy-title" class="px-4 py-20 md:px-8">
-  <p class="font-bold uppercase tracking-widest">{pick(copy.eyebrow, locale)}</p>
-  <h2 id="where-to-buy-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
-  <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
+<section id="where-to-buy" aria-labelledby="where-to-buy-title" class="px-4 py-20 md:px-8 md:py-28">
+  <div class="mx-auto max-w-7xl">
+    <p class="font-bold tracking-widest uppercase">{pick(copy.eyebrow, locale)}</p>
+    <h2 id="where-to-buy-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
+    <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
+
+    <ul class="mt-12 grid gap-5 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
+      {
+        retailers.map((retailer) => (
+          <li class="flex gap-4 rounded-3xl border-3 border-cocoa bg-cream p-5 shadow-[5px_5px_0_var(--color-cocoa)] md:p-6">
+            <svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" class="shrink-0">
+              <path
+                d="M12 22s7-6.4 7-12.2A7 7 0 0 0 5 9.8C5 15.6 12 22 12 22Z"
+                fill="var(--color-pink)"
+                stroke="var(--color-cocoa)"
+                stroke-width="1.8"
+                stroke-linejoin="round"
+              />
+              <circle cx="12" cy="9.8" r="2.6" fill="var(--color-cream)" stroke="var(--color-cocoa)" stroke-width="1.8" />
+            </svg>
+            <div class="min-w-0">
+              <p class="text-sm font-bold tracking-widest uppercase">{pick(retailer.city, locale)}</p>
+              <h3 class="mt-1 text-2xl">{retailer.name}</h3>
+              <p class="mt-2">{retailer.address}</p>
+              {retailer.url && (
+                <a
+                  href={retailer.url}
+                  class="mt-3 inline-block font-bold underline decoration-pink decoration-3 underline-offset-4 hover:decoration-cocoa"
+                  rel="noopener"
+                >
+                  {t(locale, 'retailers.website')}
+                  <span class="sr-only">, {retailer.name}</span>
+                </a>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </section>
