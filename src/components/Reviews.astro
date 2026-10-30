@@ -1,13 +1,95 @@
 ---
-import { site } from '../content';
-import { getLocale, pick } from '../i18n/utils';
+import CarouselNav from './CarouselNav.astro';
+import { reviews, site } from '../content';
+import { getLocale, pick, t } from '../i18n/utils';
 
 const locale = getLocale(Astro.url);
 const copy = site.sections.reviews;
+const star = 'M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8Z';
 ---
 
-<section id="reviews" aria-labelledby="reviews-title" class="px-4 py-20 md:px-8">
-  <p class="font-bold uppercase tracking-widest">{pick(copy.eyebrow, locale)}</p>
-  <h2 id="reviews-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
-  <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
+<section
+  id="reviews"
+  aria-labelledby="reviews-title"
+  class="@container overflow-hidden bg-pink py-20 md:py-28"
+  data-carousel
+  data-status-template={t(locale, 'reviews.status')}
+>
+  <div class="mx-auto flex max-w-7xl flex-col gap-8 px-4 md:flex-row md:items-end md:justify-between md:px-8">
+    <div>
+      <p class="font-bold tracking-widest uppercase">{pick(copy.eyebrow, locale)}</p>
+      <h2 id="reviews-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
+      <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
+      <p class="mt-5 inline-flex items-center gap-2 rounded-full bg-cream px-4 py-1.5 text-sm font-bold">
+        <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true" class="shrink-0">
+          <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M10 9v5M10 6.2v.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+        </svg>
+        {pick(copy.demoNote, locale)}
+      </p>
+    </div>
+
+    <CarouselNav
+      controls="reviews-track"
+      prevLabel={t(locale, 'reviews.prev')}
+      nextLabel={t(locale, 'reviews.next')}
+    />
+  </div>
+
+  <ul
+    id="reviews-track"
+    class="carousel mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto overscroll-x-contain pt-2 pb-6 md:mt-14"
+    tabindex="0"
+    aria-label={t(locale, 'reviews.label')}
+    data-carousel-track
+  >
+    {
+      reviews.map((review) => {
+        const rating = Math.max(0, Math.min(5, Math.round(review.rating)));
+        return (
+          <li class="shrink-0 snap-start" data-carousel-slide data-name={review.name}>
+            <figure
+              class="flex h-full flex-col rounded-[2rem] bg-cream p-6 shadow-[6px_6px_0_var(--color-cocoa)] md:p-8"
+              data-tilt
+            >
+              <div class="flex gap-1" role="img" aria-label={t(locale, 'rating.label', { rating })}>
+                {Array.from({ length: 5 }, (_, i) => (
+                  <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" data-review-star>
+                    <path
+                      d={star}
+                      fill={i < rating ? 'var(--color-sun)' : 'none'}
+                      stroke="var(--color-cocoa)"
+                      stroke-width="1.8"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                ))}
+              </div>
+              <blockquote class="mt-5 flex-1 text-lg md:text-xl">
+                <p>{pick(review.text, locale)}</p>
+              </blockquote>
+              <figcaption class="mt-6 flex items-center gap-3">
+                <span
+                  aria-hidden="true"
+                  class="grid size-11 shrink-0 place-items-center rounded-full bg-cocoa font-display text-lg text-cream"
+                >
+                  {review.name.charAt(0)}
+                </span>
+                <span>
+                  <span class="block font-bold">{review.name}</span>
+                  <span class="block text-sm">{pick(review.city, locale)}</span>
+                </span>
+              </figcaption>
+            </figure>
+          </li>
+        );
+      })
+    }
+  </ul>
+
+  <p class="sr-only" aria-live="polite" data-carousel-status></p>
 </section>
+
+<script>
+  import '../scripts/carousel';
+</script>

@@ -20,6 +20,7 @@ mm.add('(prefers-reduced-motion: no-preference) and (max-width: 767.98px)', () =
 // Sections below the pinned Process section: create their triggers after it (see CLAUDE.md).
 mm.add('(prefers-reduced-motion: no-preference)', () => {
   initComparison();
+  initReviews();
 });
 
 // Pointer tilt only for a real mouse: no touch, no reduced motion.
@@ -90,7 +91,8 @@ function initHero() {
 }
 
 function initProducts() {
-  const slides = gsap.utils.toArray<HTMLElement>('[data-carousel-slide]');
+  // Scoped: other carousels (reviews) share the [data-carousel-*] markup.
+  const slides = gsap.utils.toArray<HTMLElement>('#products [data-carousel-slide]');
   if (!slides.length) return;
 
   gsap.from(slides, {
@@ -190,6 +192,25 @@ function initComparison() {
       0.45,
     )
     .from(q('[data-compare-cross]'), { scale: 0.6, opacity: 0, transformOrigin: '50% 50%', duration: 0.4, stagger: 0.1 }, 0.6);
+}
+
+function initReviews() {
+  const track = document.querySelector<HTMLElement>('#reviews [data-carousel-track]');
+  if (!track) return;
+
+  const q = gsap.utils.selector(track);
+  gsap
+    .timeline({
+      defaults: { ease: 'power3.out' },
+      // Below the Process pin: see the note in initComparison.
+      scrollTrigger: { trigger: track, start: 'top 80%', once: true, refreshPriority: -1 },
+    })
+    .from(q('[data-carousel-slide]'), { y: 80, rotate: -3, opacity: 0, duration: 0.8, stagger: 0.1 })
+    .from(
+      q('[data-review-star]'),
+      { scale: 0, rotate: -72, transformOrigin: '50% 50%', duration: 0.4, stagger: 0.03, ease: 'back.out(3)' },
+      0.3,
+    );
 }
 
 function initTilt() {
