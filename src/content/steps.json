@@ -20,14 +20,14 @@
     "illustration": "roast"
   },
   {
-    "id": "grind",
+    "id": "conche",
     "number": 3,
-    "title": { "en": "Grind for days", "fr": "Broyer, longtemps" },
+    "title": { "en": "Conche for days", "fr": "Concher, longtemps" },
     "body": {
-      "en": "Cracked nibs spin in stone grinders for 72 hours until they turn silky. Patience is our secret ingredient (along with cocoa butter).",
-      "fr": "Les éclats de fèves tournent 72 heures sous la meule de pierre jusqu’à devenir soyeux. Notre ingrédient secret : la patience (et le beurre de cacao)."
+      "en": "Ground nibs swirl in the conche for 72 hours until every gritty bit turns silky. Patience is our secret ingredient (along with cocoa butter).",
+      "fr": "Les éclats de fèves tournent 72 heures dans la conche jusqu’à devenir parfaitement soyeux. Notre ingrédient secret : la patience (et le beurre de cacao)."
     },
-    "illustration": "grind"
+    "illustration": "conche"
   },
   {
     "id": "bar",

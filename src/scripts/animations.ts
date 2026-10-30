@@ -13,6 +13,10 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
   initProducts();
 });
 
+// "How it's made": pinned scrub on tablet/desktop, simple fade-ins on mobile.
+mm.add('(prefers-reduced-motion: no-preference) and (min-width: 768px)', () => initProcessPinned());
+mm.add('(prefers-reduced-motion: no-preference) and (max-width: 767.98px)', () => initProcessFade());
+
 // Pointer tilt only for a real mouse: no touch, no reduced motion.
 mm.add('(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine)', () => initTilt());
 
@@ -92,6 +96,71 @@ function initProducts() {
     stagger: 0.1,
     ease: 'power3.out',
     scrollTrigger: { trigger: slides[0].parentElement, start: 'top 80%', once: true },
+  });
+}
+
+function initProcessPinned() {
+  const section = document.querySelector<HTMLElement>('[data-process]');
+  const steps = gsap.utils.toArray<HTMLElement>('[data-process-step]');
+  if (!section || steps.length < 2) return;
+
+  const q = gsap.utils.selector(section);
+  const digits = q('[data-process-digits]');
+  const texts = steps.map((step) => step.querySelector('[data-process-text]'));
+  const arts = steps.map((step) => step.querySelector('[data-process-art]'));
+  const last = steps.length - 1;
+
+  // Switch the CSS to the stacked-in-one-cell layout before ScrollTrigger measures anything.
+  section.dataset.pinned = '';
+  gsap.set([...texts.slice(1), ...arts.slice(1)], { opacity: 0 });
+
+  const tl = gsap.timeline({
+    defaults: { ease: 'power2.inOut' },
+    scrollTrigger: {
+      trigger: section,
+      pin: true,
+      start: 'top top',
+      // One viewport of scrolling per step change.
+      end: () => `+=${last * window.innerHeight}`,
+      scrub: 0.6,
+      // Settle on the nearest step. No inertia: scrub lag reads as velocity and would skip steps.
+      snap: { snapTo: 'labels', inertia: false, duration: { min: 0.2, max: 0.6 }, delay: 0.1, ease: 'power1.inOut' },
+      invalidateOnRefresh: true,
+    },
+  });
+
+  tl.addLabel('step-1', 0);
+  for (let i = 1; i <= last; i++) {
+    const at = i - 1;
+    tl.to(texts[i - 1], { opacity: 0, y: -30, duration: 0.45 }, at)
+      .to(arts[i - 1], { opacity: 0, scale: 0.8, rotate: -10, duration: 0.45 }, at)
+      .fromTo(texts[i], { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45 }, at + 0.55)
+      .fromTo(
+        arts[i],
+        { opacity: 0, scale: 0.8, rotate: 10 },
+        { opacity: 1, scale: 1, rotate: 0, duration: 0.55, ease: 'back.out(1.6)' },
+        at + 0.45,
+      )
+      .to(digits, { yPercent: (-100 * i) / steps.length, duration: 0.7, ease: 'power3.inOut' }, at + 0.15)
+      .addLabel(`step-${i + 1}`, i);
+  }
+
+  // Progress starts at 1/n so step 1 already reads as "on".
+  tl.fromTo(q('[data-process-progress]'), { scaleX: 1 / steps.length }, { scaleX: 1, duration: last, ease: 'none' }, 0);
+
+  // matchMedia reverts the tweens; the layout switch is ours to undo.
+  return () => delete section.dataset.pinned;
+}
+
+function initProcessFade() {
+  gsap.utils.toArray<HTMLElement>('[data-process-step]').forEach((step) => {
+    gsap.from(step, {
+      y: 40,
+      opacity: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: step, start: 'top 85%', once: true },
+    });
   });
 }
 

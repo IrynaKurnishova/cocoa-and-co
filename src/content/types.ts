@@ -14,7 +14,7 @@ export interface Product {
   notes: Localized[];
 }
 
-export type StepIllustration = 'bean' | 'roast' | 'grind' | 'bar';
+export type StepIllustration = 'bean' | 'roast' | 'conche' | 'bar';
 
 export interface Step {
   id: string;
