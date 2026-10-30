@@ -7,7 +7,46 @@ const other = locale === 'en' ? 'fr' : 'en';
 ---
 
 <nav aria-label={t(locale, 'langToggle.label')}>
-  <a href={getRelativeLocaleUrl(other)} hreflang={other} lang={other} class="font-bold underline underline-offset-4">
+  <a
+    href={getRelativeLocaleUrl(other)}
+    hreflang={other}
+    lang={other}
+    class="font-bold underline underline-offset-4"
+    data-lang-toggle
+  >
     {t(locale, 'langToggle.switchTo')}
   </a>
 </nav>
+
+<script>
+  // Keep the reader's place when switching language: point the link at the same section
+  // (ids are identical in every locale). The section "in view" is the last one whose top has
+  // passed a line 40% down the viewport, or the last section once the page is scrolled to the
+  // bottom (it may never reach the line); the hero (first section) maps to no hash.
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang-toggle]').forEach((link) => {
+    const base = link.getAttribute('href')!;
+    const sections = [...document.querySelectorAll<HTMLElement>('main section[id], footer [id="newsletter"]')];
+    let frame = 0;
+
+    function update() {
+      const line = window.innerHeight * 0.4;
+      const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2;
+      let current: HTMLElement | undefined = atBottom ? sections.at(-1) : undefined;
+      for (const section of atBottom ? [] : sections) {
+        if (section.getBoundingClientRect().top <= line) current = section;
+      }
+      const id = current && current !== sections[0] ? current.id : '';
+      link.href = id ? `${base}#${id}` : base;
+    }
+
+    const schedule = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    window.addEventListener('hashchange', schedule);
+    update();
+  });
+</script>
