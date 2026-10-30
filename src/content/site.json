@@ -95,6 +95,12 @@
     "demoNote": {
       "en": "Cocoa & Co. is a fictional brand created for a portfolio demo.",
       "fr": "Cocoa & Co. est une marque fictive créée pour un portfolio."
-    }
+    },
+    "socialTitle": { "en": "Follow the crumbs", "fr": "Suivez les miettes" },
+    "social": [
+      { "network": "instagram", "name": "Instagram", "url": "https://www.instagram.com/" },
+      { "network": "tiktok", "name": "TikTok", "url": "https://www.tiktok.com/" },
+      { "network": "youtube", "name": "YouTube", "url": "https://www.youtube.com/" }
+    ]
   }
 }

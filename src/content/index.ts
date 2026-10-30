@@ -15,7 +15,7 @@ export const comparison: ComparisonRow[] = comparisonJson;
 export const reviews: Review[] = reviewsJson;
 export const retailers: Retailer[] = retailersJson;
 export const faq: FaqItem[] = faqJson;
-export const site: Site = siteJson;
+export const site: Site = siteJson as Site; // `social[].network` is a string union
 
 // Product colours are edited by non-devs, so check them against how they're used:
 // cream text sits on `color` (section background), cocoa text sits on `accent` (chips).

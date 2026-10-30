@@ -21,7 +21,8 @@
     "newsletter.submit": "Sign me up",
     "newsletter.errorEmpty": "We need an email to send you chocolate news.",
     "newsletter.errorInvalid": "That email looks a bit melted. Mind checking it?",
-    "newsletter.success": "You're in! First sweet email lands soon. (Demo only, nothing was sent.)"
+    "newsletter.success": "You're in! First sweet email lands soon. (Demo only, nothing was sent.)",
+    "social.label": "{name} (demo link)"
   },
   "fr": {
     "skipToContent": "Aller au contenu",
@@ -45,6 +46,7 @@
     "newsletter.submit": "Je m’inscris",
     "newsletter.errorEmpty": "Il nous faut un e-mail pour vous parler chocolat.",
     "newsletter.errorInvalid": "Cet e-mail a l’air un peu fondu. Vous vérifiez ?",
-    "newsletter.success": "C’est fait ! Premier e-mail gourmand très bientôt. (Démo, rien n’a été envoyé.)"
+    "newsletter.success": "C’est fait ! Premier e-mail gourmand très bientôt. (Démo, rien n’a été envoyé.)",
+    "social.label": "{name} (lien de démo)"
   }
 }

@@ -50,6 +50,16 @@ export interface FaqItem {
   answer: Localized;
 }
 
+export type SocialNetwork = 'instagram' | 'tiktok' | 'youtube';
+
+/** The brand is fictional, so `url` points at the platform itself, not an account. */
+export interface SocialLink {
+  network: SocialNetwork;
+  /** Platform name, the same in every locale. */
+  name: string;
+  url: string;
+}
+
 export interface SectionCopy {
   eyebrow: Localized;
   title: Localized;
@@ -74,5 +84,7 @@ export interface Site {
     newsletterBody: Localized;
     legal: Localized;
     demoNote: Localized;
+    socialTitle: Localized;
+    social: SocialLink[];
   };
 }
