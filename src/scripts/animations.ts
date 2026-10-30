@@ -13,9 +13,11 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
   initProducts();
 });
 
-// "How it's made": pinned scrub on tablet/desktop, simple fade-ins on mobile.
-mm.add('(prefers-reduced-motion: no-preference) and (min-width: 768px)', () => initProcessPinned());
-mm.add('(prefers-reduced-motion: no-preference) and (max-width: 767.98px)', () => initProcessFade());
+// "How it's made": pinned scrub on tablet/desktop, simple fade-ins on mobile and on viewports
+// too short to hold the pinned layout.
+const motion = '(prefers-reduced-motion: no-preference)';
+mm.add(`${motion} and (min-width: 768px) and (min-height: 560px)`, () => initProcessPinned());
+mm.add(`${motion} and (max-width: 767.98px), ${motion} and (max-height: 559.98px)`, () => initProcessFade());
 
 // Sections below the pinned Process section: create their triggers after it (see CLAUDE.md).
 mm.add('(prefers-reduced-motion: no-preference)', () => {
@@ -119,6 +121,16 @@ function initProcessPinned() {
 
   // Switch the CSS to the stacked-in-one-cell layout before ScrollTrigger measures anything.
   section.dataset.pinned = '';
+
+  // Copy is editable, so the pinned layout may not fit even on a tall enough viewport:
+  // fall back to the stacked layout rather than clipping text.
+  const inner = section.firstElementChild as HTMLElement;
+  const { paddingTop, paddingBottom } = getComputedStyle(section);
+  if (inner.offsetHeight > section.clientHeight - parseFloat(paddingTop) - parseFloat(paddingBottom)) {
+    delete section.dataset.pinned;
+    initProcessFade();
+    return;
+  }
   gsap.set([...texts.slice(1), ...arts.slice(1)], { opacity: 0 });
 
   const tl = gsap.timeline({

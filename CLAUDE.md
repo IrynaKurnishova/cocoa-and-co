@@ -57,7 +57,9 @@ Rules:
 - Use `gsap.matchMedia()`: full animations under `(prefers-reduced-motion: no-preference)`,
   otherwise content is simply visible (no hidden-until-animated content).
 - Animate only `transform` and `opacity`. No layout-thrashing properties.
-- Pinned "How it's made" section only on ≥768px; on mobile, steps stack with simple fade-ins.
+- Pinned "How it's made" section only on ≥768px wide and ≥560px tall, and only if the content fits
+  the viewport (checked at init, so longer copy falls back safely); otherwise steps stack with
+  simple fade-ins.
 - Marquee is pure CSS (`@keyframes`), paused under reduced motion.
 - Carousel = CSS scroll-snap + pointer-based tilt (disabled on touch and reduced motion).
 - Call `ScrollTrigger.refresh()` after fonts load.

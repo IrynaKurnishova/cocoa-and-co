@@ -14,14 +14,14 @@ const pad = (n: number) => String(n).padStart(2, '0');
     <h2 id="how-its-made-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
     <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
 
-    <div class="process-stage relative mt-12 md:mt-16">
+    <div class="process-stage relative mt-12 md:mt-16" data-process-stage>
       {
         // Rolling counter + progress bar, only shown in the pinned desktop view
         // (each step also carries its own number for the stacked layout and screen readers).
       }
       <div class="process-counter" aria-hidden="true">
         <div class="flex items-end gap-3 font-display leading-none">
-          <span class="block h-[1em] overflow-hidden text-8xl">
+          <span class="process-digits block h-[1em] overflow-hidden text-8xl">
             <span class="block tabular-nums" data-process-digits>
               {steps.map((step) => <span class="block h-[1em]">{pad(step.number)}</span>)}
             </span>
@@ -41,7 +41,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
                 <p class="process-num inline-grid size-14 place-items-center rounded-full bg-sun font-display text-2xl">
                   {pad(step.number)}
                 </p>
-                <h3 class="mt-4 text-3xl md:text-5xl">{pick(step.title, locale)}</h3>
+                <h3 class="process-title mt-4 text-3xl md:text-5xl">{pick(step.title, locale)}</h3>
                 <p class="mt-4 max-w-[42ch] text-lg">{pick(step.body, locale)}</p>
               </div>
               <div class="order-first md:order-none" data-process-art>
@@ -61,8 +61,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
   }
 
   /*
-   * Pinned view: `data-pinned` is set by animations.ts only on ≥768px with motion allowed,
-   * so without JS (or with reduced motion) the steps simply stack.
+   * Pinned view: `data-pinned` is set by animations.ts only on ≥768px × ≥560px with motion
+   * allowed, and only if it fits the viewport, so otherwise the steps simply stack.
    */
   .process[data-pinned] {
     display: flex;
@@ -98,7 +98,35 @@ const pad = (n: number) => String(n).padStart(2, '0');
     white-space: nowrap;
   }
 
-  .process[data-pinned] .process-svg {
+  /* :global: the svg is rendered by the ProcessStep child component, out of this scope. */
+  .process[data-pinned] :global(.process-svg) {
     max-height: 52svh;
+  }
+
+  /* Short viewports (small laptops, landscape tablets): tighter pinned layout so it fits. */
+  @media (max-height: 820px) {
+    .process[data-pinned] {
+      padding-block: 1.5rem;
+    }
+
+    .process[data-pinned] .process-stage {
+      margin-top: 1.5rem;
+    }
+
+    .process[data-pinned] .process-digits {
+      font-size: var(--text-6xl);
+    }
+
+    .process[data-pinned] .process-text {
+      padding-top: 6rem;
+    }
+
+    .process[data-pinned] .process-title {
+      font-size: var(--text-4xl);
+    }
+
+    .process[data-pinned] :global(.process-svg) {
+      max-height: 45svh;
+    }
   }
 </style>
