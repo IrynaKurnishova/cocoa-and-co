@@ -1,5 +1,7 @@
 ---
 // Prev/next buttons for a `[data-carousel]` section (behaviour in src/scripts/carousel.ts).
+// The disabled state dims the icon rather than the button: element opacity would also fade the
+// focus ring below 3:1.
 interface Props {
   /** id of the carousel track the buttons scroll. */
   controls: string;
@@ -18,7 +20,7 @@ const { controls, prevLabel, nextLabel, onDark = false } = Astro.props;
       <button
         type="button"
         class:list={[
-          'grid size-14 place-items-center rounded-full bg-cream text-cocoa shadow-[4px_4px_0_var(--color-cocoa)] transition-[transform,opacity] duration-200 hover:-translate-y-0.5 aria-disabled:cursor-not-allowed aria-disabled:opacity-40 aria-disabled:hover:translate-y-0 motion-reduce:transition-none',
+          'grid size-14 place-items-center rounded-full bg-cream text-cocoa shadow-[4px_4px_0_var(--color-cocoa)] transition-[transform,opacity] duration-200 hover:-translate-y-0.5 aria-disabled:cursor-not-allowed aria-disabled:text-cocoa/40 aria-disabled:shadow-none aria-disabled:hover:translate-y-0 motion-reduce:transition-none',
           onDark && 'focus-visible:outline-cream',
         ]}
         aria-label={dir === 'prev' ? prevLabel : nextLabel}

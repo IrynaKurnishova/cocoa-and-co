@@ -67,6 +67,11 @@
     }
   }
 
+  /* The track is full-bleed inside an overflow-hidden section: draw the ring inside it. */
+  .carousel:focus-visible {
+    outline-offset: -4px;
+  }
+
   .carousel::-webkit-scrollbar {
     display: none;
   }
