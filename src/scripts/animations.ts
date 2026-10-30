@@ -17,6 +17,11 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
 mm.add('(prefers-reduced-motion: no-preference) and (min-width: 768px)', () => initProcessPinned());
 mm.add('(prefers-reduced-motion: no-preference) and (max-width: 767.98px)', () => initProcessFade());
 
+// Sections below the pinned Process section: create their triggers after it (see CLAUDE.md).
+mm.add('(prefers-reduced-motion: no-preference)', () => {
+  initComparison();
+});
+
 // Pointer tilt only for a real mouse: no touch, no reduced motion.
 mm.add('(prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine)', () => initTilt());
 
@@ -163,6 +168,28 @@ function initProcessFade() {
       scrollTrigger: { trigger: step, start: 'top 85%', once: true },
     });
   });
+}
+
+function initComparison() {
+  const table = document.querySelector<HTMLElement>('[data-compare]');
+  if (!table) return;
+
+  const q = gsap.utils.selector(table);
+  gsap
+    .timeline({
+      defaults: { ease: 'power3.out' },
+      // refreshPriority -1: if the Process pin is re-created on resize (matchMedia), this trigger
+      // still refreshes after it and accounts for its pin spacing.
+      scrollTrigger: { trigger: table, start: 'top 75%', once: true, refreshPriority: -1 },
+    })
+    .from(q('[data-compare-bar]'), { scaleY: 0, transformOrigin: '50% 100%', duration: 0.8, ease: 'power4.out' })
+    .from(q('[data-compare-cell]'), { y: 16, opacity: 0, duration: 0.5, stagger: 0.04 }, 0.2)
+    .from(
+      q('[data-compare-check]'),
+      { scale: 0, rotate: -45, transformOrigin: '50% 50%', duration: 0.5, stagger: 0.1, ease: 'back.out(2.5)' },
+      0.45,
+    )
+    .from(q('[data-compare-cross]'), { scale: 0.6, opacity: 0, transformOrigin: '50% 50%', duration: 0.4, stagger: 0.1 }, 0.6);
 }
 
 function initTilt() {

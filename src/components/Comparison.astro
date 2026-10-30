@@ -1,13 +1,102 @@
 ---
-import { site } from '../content';
-import { getLocale, pick } from '../i18n/utils';
+import { comparison, site } from '../content';
+import { getLocale, pick, t } from '../i18n/utils';
 
 const locale = getLocale(Astro.url);
 const copy = site.sections.comparison;
 ---
 
-<section id="comparison" aria-labelledby="comparison-title" class="px-4 py-20 md:px-8">
-  <p class="font-bold uppercase tracking-widest">{pick(copy.eyebrow, locale)}</p>
-  <h2 id="comparison-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
-  <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
+<section id="comparison" aria-labelledby="comparison-title" class="px-4 py-20 md:px-8 md:py-28">
+  <div class="mx-auto max-w-5xl">
+    <p class="font-bold tracking-widest uppercase">{pick(copy.eyebrow, locale)}</p>
+    <h2 id="comparison-title" class="mt-2 text-4xl md:text-6xl">{pick(copy.title, locale)}</h2>
+    <p class="mt-4 max-w-prose text-lg">{pick(copy.intro, locale)}</p>
+
+    <div
+      class="relative isolate mt-12 overflow-hidden rounded-[2rem] border-3 border-cocoa bg-cream shadow-[6px_6px_0_var(--color-cocoa)] md:mt-16"
+      data-compare
+    >
+      {
+        // The "us" column bar. Its left/width match the <col> widths below.
+      }
+      <div aria-hidden="true" class="absolute inset-y-0 left-[28%] -z-10 w-[36%] bg-sun" data-compare-bar></div>
+
+      <table class="w-full table-fixed text-left text-sm md:text-lg" aria-labelledby="comparison-title">
+        <colgroup>
+          <col class="w-[28%]" />
+          <col class="w-[36%]" />
+          <col class="w-[36%]" />
+        </colgroup>
+        <thead>
+          <tr class="align-bottom">
+            <th scope="col" class="p-3 font-bold md:p-6">{t(locale, 'comparison.feature')}</th>
+            <th scope="col" class="p-3 md:p-6">
+              <span class="inline-block rounded-full bg-pink px-3 py-1 font-display text-base md:text-2xl">
+                {pick(copy.usLabel, locale)}
+              </span>
+            </th>
+            <th scope="col" class="p-3 font-display text-base md:p-6 md:text-2xl">{pick(copy.themLabel, locale)}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            comparison.map((row) => (
+              <tr class="border-t-2 border-cocoa/15 align-top" data-compare-row>
+                <th scope="row" class="p-3 font-bold md:p-6">
+                  <span class="block" data-compare-cell>
+                    {pick(row.label, locale)}
+                  </span>
+                </th>
+                <td class="p-3 md:p-6">
+                  <span class="flex flex-col gap-2 md:flex-row md:items-start md:gap-3" data-compare-cell>
+                    <svg
+                      viewBox="0 0 32 32"
+                      width="32"
+                      height="32"
+                      aria-hidden="true"
+                      class="size-7 shrink-0 md:size-8"
+                      data-compare-check
+                    >
+                      <circle cx="16" cy="16" r="16" fill="var(--color-cocoa)" />
+                      <path
+                        d="m9 16.5 4.5 4.5L23 11.5"
+                        stroke="var(--color-cream)"
+                        stroke-width="3.5"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                    <span class="font-bold">{pick(row.us, locale)}</span>
+                  </span>
+                </td>
+                <td class="p-3 md:p-6">
+                  <span class="flex flex-col gap-2 text-cocoa/75 md:flex-row md:items-start md:gap-3" data-compare-cell>
+                    <svg
+                      viewBox="0 0 32 32"
+                      width="32"
+                      height="32"
+                      aria-hidden="true"
+                      class="size-7 shrink-0 md:size-8"
+                      data-compare-cross
+                    >
+                      <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2" />
+                      <path
+                        d="m11 11 10 10m0-10L11 21"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        fill="none"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                    <span>{pick(row.them, locale)}</span>
+                  </span>
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>
