@@ -45,3 +45,33 @@
     border-radius: 2px;
   }
 }
+
+/*
+ * Scroll-snap carousel track (behaviour in src/scripts/carousel.ts). Needs an `@container`
+ * ancestor spanning the section. Lines the first card up with the max-w-7xl gutter and adds
+ * trailing space so every card (including the last) can snap to the start. Container units
+ * (cqw) are the section width, so padding and card width don't depend on each other.
+ */
+@layer components {
+  .carousel {
+    --gutter: 1rem;
+    --card-w: min(82cqw, 22rem);
+    --pad: max(var(--gutter), calc((100cqw - 80rem) / 2 + var(--gutter)));
+    padding-inline: var(--pad) calc(100cqw - var(--pad) - var(--card-w));
+    scroll-padding-inline: var(--pad);
+    scrollbar-width: none;
+
+    @media (min-width: 768px) {
+      --gutter: 2rem;
+      --card-w: 24rem;
+    }
+  }
+
+  .carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel > li {
+    width: var(--card-w);
+  }
+}

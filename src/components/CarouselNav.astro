@@ -1,0 +1,42 @@
+---
+// Prev/next buttons for a `[data-carousel]` section (behaviour in src/scripts/carousel.ts).
+interface Props {
+  /** id of the carousel track the buttons scroll. */
+  controls: string;
+  prevLabel: string;
+  nextLabel: string;
+  /** Use a cream focus ring, for dark section backgrounds. */
+  onDark?: boolean;
+}
+
+const { controls, prevLabel, nextLabel, onDark = false } = Astro.props;
+---
+
+<div class="flex shrink-0 gap-3">
+  {
+    (['prev', 'next'] as const).map((dir) => (
+      <button
+        type="button"
+        class:list={[
+          'grid size-14 place-items-center rounded-full bg-cream text-cocoa shadow-[4px_4px_0_var(--color-cocoa)] transition-[transform,opacity] duration-200 hover:-translate-y-0.5 aria-disabled:cursor-not-allowed aria-disabled:opacity-40 aria-disabled:hover:translate-y-0 motion-reduce:transition-none',
+          onDark && 'focus-visible:outline-cream',
+        ]}
+        aria-label={dir === 'prev' ? prevLabel : nextLabel}
+        aria-controls={controls}
+        aria-disabled={dir === 'prev' ? 'true' : undefined}
+        data-carousel-btn={dir}
+      >
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class:list={[dir === 'prev' && 'rotate-180']}>
+          <path
+            d="M4 12h16m0 0-6-6m6 6-6 6"
+            stroke="currentColor"
+            stroke-width="2.5"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+    ))
+  }
+</div>
