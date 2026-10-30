@@ -3,8 +3,17 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
+// Absolute URLs (hreflang, canonical) need the site origin. SITE_URL wins if set; on Vercel
+// builds the production domain is exposed as VERCEL_PROJECT_PRODUCTION_URL (no protocol).
+// Read via globalThis so @ts-check passes without adding @types/node.
+const env = /** @type {Record<string, string | undefined>} */ (/** @type {any} */ (globalThis).process.env);
+const site =
+  env.SITE_URL ??
+  (env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:4321');
+
 // https://astro.build/config
 export default defineConfig({
+  site,
   i18n: {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
