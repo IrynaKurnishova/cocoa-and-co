@@ -1,7 +1,7 @@
 ---
 import ProcessStep from './illustrations/ProcessStep.astro';
 import { site, steps } from '../content';
-import { getLocale, pick } from '../i18n/utils';
+import { getLocale, pick, t } from '../i18n/utils';
 
 const locale = getLocale(Astro.url);
 const copy = site.sections.process;
@@ -16,8 +16,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
 
     <div class="process-stage relative mt-12 md:mt-16" data-process-stage>
       {
-        // Rolling counter + progress bar, only shown in the pinned desktop view
-        // (each step also carries its own number for the stacked layout and screen readers).
+        // Rolling counter + progress bar, only shown in the pinned desktop view. Hidden from screen
+        // readers: each step carries its own "Step X of N" label instead.
       }
       <div class="process-counter" aria-hidden="true">
         <div class="flex items-end gap-3 font-display leading-none">
@@ -39,7 +39,8 @@ const pad = (n: number) => String(n).padStart(2, '0');
             <li class="process-step grid items-center gap-6 md:grid-cols-2 md:gap-12" data-process-step>
               <div class="process-text" data-process-text>
                 <p class="process-num inline-grid size-14 place-items-center rounded-full bg-sun font-display text-2xl">
-                  {pad(step.number)}
+                  <span aria-hidden="true">{pad(step.number)}</span>
+                  <span class="sr-only">{t(locale, 'process.step', { current: step.number, total: steps.length })}</span>
                 </p>
                 <h3 class="process-title mt-4 text-3xl md:text-5xl">{pick(step.title, locale)}</h3>
                 <p class="mt-4 max-w-[42ch] text-lg">{pick(step.body, locale)}</p>
@@ -88,7 +89,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
     padding-top: 9rem;
   }
 
-  /* The rolling counter replaces the per-step badge visually; keep it for screen readers. */
+  /* The rolling counter replaces the per-step badge visually; its "Step X of N" label stays. */
   .process[data-pinned] .process-num {
     position: absolute;
     width: 1px;
