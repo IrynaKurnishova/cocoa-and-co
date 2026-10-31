@@ -3,7 +3,7 @@
 An animated, illustrated one-page site for a **fictional** chocolate brand, built as a portfolio demo.
 Cocoa & Co., its flavours, shops and reviews are all made up. Every illustration is hand-made inline SVG.
 
-**Live:** https://YOUR-DEPLOYMENT.vercel.app <!-- replace with the production URL -->
+**Live:** https://cocoa-and-co.vercel.app
 
 Available in English (`/`) and French (`/fr/`).
 
